@@ -7,6 +7,7 @@ $(function () {
 
     let urlParams = new URLSearchParams(location.search);
     let courseId = urlParams.get("courseid");
+    $("#registerBtn").prop("href", "register.html?id=" + courseId);
 
     let obj;
 
@@ -14,7 +15,7 @@ $(function () {
 
         obj = course;
 
-      
+
         let courseIDRow = "<tr><td>" + "Course ID: "
             + "</td><td>" + obj.CourseId
             + "</td></tr>";
