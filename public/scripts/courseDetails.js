@@ -3,6 +3,8 @@
 //selection of a table that generated on a previous page.  This information will be pulled from a restful API server. 
 //Author:Cate Speakman
 
+
+//this is the ready function for Jquery for the onload
 $(function () {
 
     let urlParams = new URLSearchParams(location.search);
@@ -10,6 +12,8 @@ $(function () {
     $("#registerBtn").prop("href", "register.html?id=" + courseId);
 
     let obj;
+
+//this function will pull the course ID and list the course details 
 
     $.getJSON("/api/courses/" + courseId, function (course) {
 
@@ -52,6 +56,21 @@ $(function () {
         $("#courseDetailsTable tbody").append(feeRow);
 
 
+        //this if statement will look to see if any students are registered and if so display the list
+        if (obj.Students.length == 0) {
+            $("#studentListDiv").hide();
+        }
+        else {
+            $("#studentListDiv").show();
+        }
+        for (let i = 0; i < obj.Students.length; i++) {
+            console.log("we in");
+            let studentRow = "<tr><td>" + obj.Students[i].StudentName
+                + "</td><td>" + obj.Students[i].Email
+                + "</td></tr>";
+            $("#studentTable tbody").append(studentRow);
+
+        }//ends for loop
 
     });//ends JSON function
 
