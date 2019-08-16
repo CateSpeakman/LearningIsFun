@@ -55,7 +55,7 @@ function showList() {
             
                 let courseRow = "<tr><td>" + objs[i].CourseId
                     + "</td><td>" + objs[i].Title
-                    + "</td><td><a href='details.html?productid=" + objs[i].CourseId + "'>Details</a>"
+                    + "</td><td><a href='details.html?courseid=" + objs[i].CourseId + "'>Details</a>"
                     + "</td></tr>";
                 $("#courseTable tbody").append(courseRow);
           
