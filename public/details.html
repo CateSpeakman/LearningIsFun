@@ -14,7 +14,7 @@
 </head>
 
 <body class="container-fluid">
-    <!-- naviagtion bar-->
+    <!-- navigation bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Duckworth School of Learning</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -29,11 +29,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="courses.html">Courses</a>
                 </li>
-                
             </ul>
         </div>
     </nav>
-    <main class="main">
+
+    <main>
         <h1 class="jumbotron">Duckworth School of Learning</h1>
         <section>
             <div class="container">
@@ -45,13 +45,32 @@
                     <tbody>
                     </tbody>
                 </table>
-            </div>
-
-            <div class="container text-center">
-                <a href="#" id="registerBtn" class="btn btn-info" role="button">Register</a>
+                <br />
             </div>
         </section>
 
+        <!-- this section will only display if students are registered for the course-->
+        <section>
+            <div class="container" id="studentListDiv">
+                <h3>Registered Students</h3>
+                <table class="table table-striped" id="studentTable">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+     </section>
+        <!-- this section is for the register button-->
+
+            <div class="container">
+                <a href="#" id="registerBtn" class="btn btn-info" role="button">Register</a>
+            </div>
+        
     </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

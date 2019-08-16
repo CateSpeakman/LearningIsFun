@@ -3,6 +3,9 @@
 //selection of a table that generated on a previous page.  This information will be pulled from a restful API server. 
 //Author:Cate Speakman
 
+
+
+//this function is the ready function for jQuery that executes as the page loads
 $(function () {
 
     let urlParams = new URLSearchParams(location.search);
@@ -10,9 +13,10 @@ $(function () {
 
     $("#courseid").val(id);
 
+//this posts the new student information to the server
     $("#saveBtn").on("click", function () {
         $.post("/api/register", $("#registerForm").serialize(), function (data) {
-            window.location.href = "index.html"
+            window.location.href = "details.html?id="+ id;
         });
 
         return false;
