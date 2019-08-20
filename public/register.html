@@ -51,7 +51,7 @@
                                 <label for="studentname" class="col-sm-2 col-form-label">Student Name</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" name="studentname" id="studentname"
-                                        placeholder="Student Name">
+                                        placeholder="Student Name" required>
                                 </div>
                             </div>
                         </div>
@@ -60,13 +60,16 @@
                                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-4">
                                     <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Email">
+                                        placeholder="Email" required>
                                 </div>
                             </div>
                         </div>
                         <div class="container">
                             <button id="saveBtn" type="button" class="btn btn-info">Register</button>
                         </div>
+                         <div class="container" id="msgDiv"> 
+                                <ul id="errorMessages"></ul> 
+                         </div>
                     </div>
                 </form>
             </div>

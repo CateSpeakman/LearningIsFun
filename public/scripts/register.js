@@ -9,16 +9,45 @@
 $(function () {
 
     let urlParams = new URLSearchParams(location.search);
-    let id = urlParams.get("id");
+    let id = urlParams.get("courseid");
 
     $("#courseid").val(id);
 
-//this posts the new student information to the server
+    //this posts the new student information to the server
     $("#saveBtn").on("click", function () {
+
+
+        formValidation();
+
         $.post("/api/register", $("#registerForm").serialize(), function (data) {
-            window.location.href = "details.html?id="+ id;
+            window.location.href = "details.html?courseid=" + id;
         });
 
         return false;
     });//end of on click
 });//end of ready function
+
+function formValidation() {
+
+    $("#errorMessages").empty();
+
+    let emailPattern = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z] {2,3}$/;
+    let email = $("#email");
+    let errMsg = [];
+
+    if ($("#studentname").val().trim() == "") {
+        errMsg[errMsg.length] = "Student Name is required";
+    }//ends if statement for studentname validation
+
+    if (emailPattern.test(email) == false){
+        errMsg[errMsg.length] = "Valid email address is required";
+}//ends if statement for email validation
+
+if (errMsg.length == 0) {
+    return true;
+} else
+    for (let i = 0; i < errMsg.length; i++) {
+        $("<li>" + errMsg[i] + "</li>").appendTo($("#errorMessages"));
+    }
+return false;
+}

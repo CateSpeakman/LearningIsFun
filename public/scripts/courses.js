@@ -35,6 +35,7 @@ $(function () {
     })//ends Json function
 
     $("#categoryList").on("change", showList)
+    $("#allCourses").on("click", showAllCourses)
 
 })//ends ready function
 
@@ -43,12 +44,10 @@ $(function () {
 function showList() {
     let objs;
 
+    if ($("#categoryList").val() != "-1"){
     $.getJSON("/api/courses/bycategory/" + $('#categoryList').val(), function (courses) {
 
         objs = courses;
-
-        let selectedCategory = $('#categoryList').val();
-
         $("#courseTable tbody").empty();
 
         for (let i = 0; i < objs.length; i++) {
@@ -62,4 +61,26 @@ function showList() {
 
         }//ends for loop for populating table based on DDL selection
     });//ends JSON function
+    }//ends if statement for category 
 }//ends showList function
+
+function showAllCourses() {
+    let objs;
+
+    $.getJSON("/api/courses/", function (courses) {
+
+        objs = courses;
+        $("#courseTable tbody").empty();
+
+        for (let i = 0; i < objs.length; i++) {
+            
+                let courseRow = "<tr><td>" + objs[i].CourseId
+                    + "</td><td>" + objs[i].Title
+                    + "</td><td><a href='details.html?courseid=" + objs[i].CourseId + "'>Details</a>"
+                    + "</td></tr>";
+                $("#courseTable tbody").append(courseRow);
+          
+
+        }//ends for loop for populating table based on DDL selection
+    });//ends JSON function
+}//ends function for show all courses
