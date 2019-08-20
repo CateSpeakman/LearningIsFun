@@ -9,7 +9,7 @@ $(function () {
 
     let urlParams = new URLSearchParams(location.search);
     let courseId = urlParams.get("courseid");
-    $("#registerBtn").prop("href", "register.html?id=" + courseId);
+    $("#registerBtn").prop("href", "register.html?courseid=" + courseId);
 
     let obj;
 
