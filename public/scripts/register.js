@@ -17,10 +17,16 @@ $(function () {
     $("#saveBtn").on("click", function () {
 
 
-        formValidation();
+        let isValid = formValidation();
 
+        if(isValid == false)
+        {
+            return;
+        }
+       
         $.post("/api/register", $("#registerForm").serialize(), function (data) {
             window.location.href = "details.html?courseid=" + id;
+            alert("register successful");
         });
 
         return false;
@@ -31,23 +37,28 @@ function formValidation() {
 
     $("#errorMessages").empty();
 
-    let emailPattern = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z] {2,3}$/;
-    let email = $("#email");
+    let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    let email = $("#email").val();
     let errMsg = [];
 
     if ($("#studentname").val().trim() == "") {
         errMsg[errMsg.length] = "Student Name is required";
     }//ends if statement for studentname validation
 
-    if (emailPattern.test(email) == false){
-        errMsg[errMsg.length] = "Valid email address is required";
-}//ends if statement for email validation
+    //console.log(emailPattern.test(email));
+    console.log(email);
 
-if (errMsg.length == 0) {
-    return true;
-} else
-    for (let i = 0; i < errMsg.length; i++) {
-        $("<li>" + errMsg[i] + "</li>").appendTo($("#errorMessages"));
+    if (emailPattern.test(email) == false) {
+        errMsg[errMsg.length] = "Valid email address is required";
+    }//ends if statement for email validation
+
+    if (errMsg.length == 0) {
+        return true;
+    } 
+    else {
+        for (let i = 0; i < errMsg.length; i++) {
+            $("<li>" + errMsg[i] + "</li>").appendTo($("#errorMessages"));
+        }
+        return false;
     }
-return false;
 }

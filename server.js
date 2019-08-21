@@ -106,6 +106,23 @@ app.get('/register.html', function (req, res) {
 
 })
 
+
+app.get('/addCourses.html', function (req, res) {
+
+    res.sendFile(__dirname + "/public/" + "addCourses.html");
+
+})
+
+
+app.get('/editCourse.html', function (req, res) {
+
+    res.sendFile(__dirname + "/public/" + "editCourse.html");
+
+})
+
+
+
+
 /* THIS CODE ALLOWS REQUESTS FOR THE PAGES THROUGH */
 
 // GET CATEGORIES
