@@ -12,6 +12,7 @@ $(function () {
     //this function will call the JSON file and populate the table based on the call to 
     //restful API
 
+    $("#addCourseBtn").prop("href", "addCourses.html");
 
     let objs;
     $.getJSON("/api/categories", function (categories) {
@@ -55,6 +56,7 @@ function showList() {
                 let courseRow = "<tr><td>" + objs[i].CourseId
                     + "</td><td>" + objs[i].Title
                     + "</td><td><a href='details.html?courseid=" + objs[i].CourseId + "'>Details</a>"
+                    + "</td><td><a href='editCourse.html?courseid=" + objs[i].CourseId + "'>Edit</a>"
                     + "</td></tr>";
                 $("#courseTable tbody").append(courseRow);
           
